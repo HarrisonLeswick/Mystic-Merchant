@@ -9,14 +9,18 @@ public class pickup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public GameObject plant;
     public GameObject root;
     public GameObject water;
-    public Image wetImage;
     public Image image; 
 
     //used to change the image when you look inside
     public Sprite closed;
     public Sprite open;
-    public Sprite empty;
 
+   public Vector3 waterHiding;
+   public Image wetImage;
+   public Sprite regular;
+   public Sprite pour;
+   private bool pouring = false;
+   private float pourTimer = 0.0f;
 
     private bool isOpen = false;
     [HideInInspector] public Transform parentAfterDrag;
@@ -66,7 +70,7 @@ private void Update() {
       }
       if(sunLevel <= 0)
          {
-               //Debug.Log("Plant is dead");
+               Debug.Log("Plant is dead");
                alive=false;
                Destroy(plant);
                // plant is dead
@@ -81,11 +85,21 @@ private void Update() {
       }
       if(waterLevel <= 0)
          {
-               //Debug.Log("Plant is dead");
+               Debug.Log("Plant is dead");
                alive = false;
                Destroy(plant);
          }
       //Debug.Log("Water: " + waterLevel);
+   }
+
+   if(pouring == true){
+      pourTimer += Time.deltaTime;
+   }
+   if(pourTimer >= 0.5){
+      pouring = false;
+      pourTimer = 0;
+      wetImage.sprite = regular;
+      water.transform.position = waterHiding;
    }
 
    //checks if the the plant is in the sun and to up the sun level
@@ -123,7 +137,7 @@ private void Update() {
         if(lifeLvl == 2)
             {
                 adult = true;
-                //Debug.Log("Plant is grown");
+                Debug.Log("Plant is grown");
             }
       //Debug.Log("Life Level =");
       //Debug.Log (lifeLvl);
@@ -131,24 +145,18 @@ private void Update() {
 
 }
 
-public void Water()
-{
-   if (alive){
-      waterLevel++;
-      //Debug.Log("Water function");
-   }
-}
 
 
 public void OnDrop(PointerEventData eventData) {
 
-   Debug.Log("Water can is over top");
-
-   GameObject waterCan = eventData.pointerDrag;
-         Debug.Log(waterCan.tag);
+   GameObject waterCan = eventData.pointerDrag;;
    if (waterCan.tag == "Water"){
-      //Debug.Log("Watered plant");
-      Water();
+      Debug.Log("Watered plant");
+      if (alive && waterLevel <3){
+      waterLevel++;
+      }
+      wetImage.sprite = pour;
+      pouring = true;
    }
 }
 
@@ -188,7 +196,7 @@ public void OnPointerExit(PointerEventData eventData)
    Debug.Log("Drag end");
    transform.SetParent(parentAfterDrag);
    image.raycastTarget = true; //ray comes back
-   Debug.Log("Parent: " + parentAfterDrag);
+
    if (transform.parent != null && transform.parent.tag == "Sun"){ //Finds out if the plant is on the counter the mixing spot or
     Debug.Log("Sun");
    }

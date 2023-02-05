@@ -655,11 +655,13 @@ MonoBehaviour:
   plant: {fileID: 786900670}
   root: {fileID: 1494748080}
   water: {fileID: 1651987217}
-  wetImage: {fileID: 0}
   image: {fileID: 146383163}
   closed: {fileID: 21300000, guid: 44dfef83b3c43744bb8b94ecf95ae143, type: 3}
   open: {fileID: 21300000, guid: 8ddfe504e50157d4d8ccff31f4182348, type: 3}
-  empty: {fileID: 0}
+  waterHiding: {x: 0, y: -137, z: 0}
+  wetImage: {fileID: 1651987219}
+  regular: {fileID: 21300000, guid: 9563dacaade10864283bc711d86ecce6, type: 3}
+  pour: {fileID: 21300000, guid: b61a30201b04f4b4a8c4a008f59e2b5a, type: 3}
   parentAfterDrag: {fileID: 0}
   sunLevel: 3
   sunInterval: 5
@@ -1483,7 +1485,7 @@ RectTransform:
   m_LocalScale: {x: 1.34, y: 1.34, z: 1.34}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 168438801}
+  m_Father: {fileID: 874450272}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
