@@ -2886,8 +2886,10 @@ MonoBehaviour:
   lifeLvl: 0
   lifeInterval: 5
   lifeTimer: 0
+  alive: 1
+  adult: 0
   timer: 0
-  decayInterval: 15
+  decayInterval: 5
 --- !u!114 &1700170529
 MonoBehaviour:
   m_ObjectHideFlags: 0

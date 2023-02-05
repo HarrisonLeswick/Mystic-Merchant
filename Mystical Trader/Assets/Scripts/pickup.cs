@@ -25,15 +25,17 @@ public class pickup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
    public float sunInterval = 5.0f;
    public float sunDecayTimer = 0.0f;
 
-//variables for having the plant need to be watered
    public float waterLevel = 3.0f;
    public float waterDecayTimer = 0.0f;
 
 
-   //growth vairables
+   
    public float lifeLvl = 0.0f;
-   public float lifeInterval = 5.0f;
+   public float lifeInterval = 15.0f;
    public float lifeTimer = 0.0f;
+
+    public bool alive = true;
+    public bool adult = false;
 
    public float timer = 0.0f;
    public float decayInterval = 15.0f;
@@ -57,17 +59,30 @@ private void Update() {
    //lowers the sun level after 15 seconds
    if (sunDecayTimer >= decayInterval){
       sunDecayTimer = 0;
-      if(sunLevel > 0){
+      if(sunLevel > 0 && !adult){
          sunLevel--;
       }
+      if(sunLevel <= 0)
+         {
+               Debug.Log("Plant is dead");
+               alive=false;
+               Destroy(plant);
+               // plant is dead
+         }
       //Debug.Log("Sun: " + sunLevel);
    }
    //lowers the water level after 15 seconds
    if (waterDecayTimer >= decayInterval){
       waterDecayTimer = 0;
-      if(waterLevel > 0){
+      if(waterLevel > 0 && !adult){
          waterLevel--;
       }
+      if(waterLevel <= 0)
+         {
+               Debug.Log("Plant is dead");
+               alive = false;
+               Destroy(plant);
+         }
       //Debug.Log("Water: " + waterLevel);
    }
 
@@ -102,19 +117,34 @@ private void Update() {
          //call plant to level up with level
          plant.GetComponent<plant>().grow(lifeLvl);
       }
-      Debug.Log("Life Level =");
-      Debug.Log (lifeLvl);
+
+        if(lifeLvl == 2)
+            {
+                adult = true;
+                Debug.Log("Plant is grown");
+            }
+      //Debug.Log("Life Level =");
+      //Debug.Log (lifeLvl);
    }
 
+}
+
+public void Water()
+{
+   if (alive){
+      waterLevel++;
+   }
 }
 
 
   
 public void OnPointerEnter(PointerEventData eventData)
    {
-      gameObject.GetComponent<Image>().sprite = open;
-      root.GetComponent<root>().rootChange(waterLevel, sunLevel);
-      isOpen = true;
+      if (alive){
+         gameObject.GetComponent<Image>().sprite = open;
+         root.GetComponent<root>().rootChange(waterLevel, sunLevel);
+         isOpen = true;
+      }
    }
 
      
