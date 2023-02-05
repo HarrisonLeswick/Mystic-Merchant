@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class pickup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class pickup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     public GameObject plant;
     public GameObject root;
+    public GameObject water;
+    public Image wetImage;
     public Image image; 
 
     //used to change the image when you look inside
@@ -133,9 +135,22 @@ public void Water()
 {
    if (alive){
       waterLevel++;
+      Debug.Log("Water function");
    }
 }
 
+
+public void OnDrop(PointerEventData eventData) {
+
+   Debug.Log("Water can is over top");
+
+   GameObject waterCan = eventData.pointerDrag;
+         Debug.Log(waterCan.tag);
+   if (waterCan.tag == "Water"){
+      Debug.Log("Watered plant");
+   Water();
+   }
+}
 
   
 public void OnPointerEnter(PointerEventData eventData)

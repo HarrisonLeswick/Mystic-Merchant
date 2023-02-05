@@ -11,6 +11,7 @@ TagManager:
   - Cutting Board
   - Pot
   - Plant
+  - Water
   layers:
   - Default
   - TransparentFX
