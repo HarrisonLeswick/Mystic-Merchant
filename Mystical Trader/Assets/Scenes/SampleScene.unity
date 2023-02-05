@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 45912951}
   - component: {fileID: 45912950}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Watering can
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8069148200817497775, guid: 5e5879dcf3e83ef4c83183031c934759, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 139.79
+      value: 139.78998
       objectReference: {fileID: 0}
     - target: {fileID: 8069148200817497775, guid: 5e5879dcf3e83ef4c83183031c934759, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2417,8 +2417,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5867286, y: 1.7963}
-  m_SizeDelta: {x: 1914.5784, y: 1084.7616}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1502084054
 MonoBehaviour:
@@ -2851,7 +2851,7 @@ RectTransform:
   m_Children:
   - {fileID: 1117469746}
   - {fileID: 1092598821}
-  m_Father: {fileID: 647618500}
+  m_Father: {fileID: 411061070}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
