@@ -20,7 +20,7 @@ public class root : MonoBehaviour
         image.color = tempColor;
 
         spriteNum = (waterLvl + (3*(sunLvl-1))- 1);
-        Debug.Log("Full: " + spriteNum + " Water: " + waterLvl + " Sun: " + sunLvl);
+        //Debug.Log("Full: " + spriteNum + " Water: " + waterLvl + " Sun: " + sunLvl);
         if(spriteNum >= 0){
             gameObject.GetComponent<Image>().sprite = rootList[(int)spriteNum];
         }

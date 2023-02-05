@@ -66,7 +66,7 @@ private void Update() {
       }
       if(sunLevel <= 0)
          {
-               Debug.Log("Plant is dead");
+               //Debug.Log("Plant is dead");
                alive=false;
                Destroy(plant);
                // plant is dead
@@ -81,7 +81,7 @@ private void Update() {
       }
       if(waterLevel <= 0)
          {
-               Debug.Log("Plant is dead");
+               //Debug.Log("Plant is dead");
                alive = false;
                Destroy(plant);
          }
@@ -123,7 +123,7 @@ private void Update() {
         if(lifeLvl == 2)
             {
                 adult = true;
-                Debug.Log("Plant is grown");
+                //Debug.Log("Plant is grown");
             }
       //Debug.Log("Life Level =");
       //Debug.Log (lifeLvl);
@@ -135,7 +135,7 @@ public void Water()
 {
    if (alive){
       waterLevel++;
-      Debug.Log("Water function");
+      //Debug.Log("Water function");
    }
 }
 
@@ -147,8 +147,8 @@ public void OnDrop(PointerEventData eventData) {
    GameObject waterCan = eventData.pointerDrag;
          Debug.Log(waterCan.tag);
    if (waterCan.tag == "Water"){
-      Debug.Log("Watered plant");
-   Water();
+      //Debug.Log("Watered plant");
+      Water();
    }
 }
 
@@ -188,7 +188,7 @@ public void OnPointerExit(PointerEventData eventData)
    Debug.Log("Drag end");
    transform.SetParent(parentAfterDrag);
    image.raycastTarget = true; //ray comes back
-
+   Debug.Log("Parent: " + parentAfterDrag);
    if (transform.parent != null && transform.parent.tag == "Sun"){ //Finds out if the plant is on the counter the mixing spot or
     Debug.Log("Sun");
    }

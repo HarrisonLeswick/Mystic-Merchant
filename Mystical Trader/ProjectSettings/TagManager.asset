@@ -4,14 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Counter
-  - Sun
-  - Mixing
-  - Inventory
-  - Cutting Board
-  - Pot
-  - Plant
   - Water
+  - Plant
+  - Counter
+  - Mixing
+  - Sun
+  - Cutting Board
+  - EmptyPot
   layers:
   - Default
   - TransparentFX
