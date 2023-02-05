@@ -8,13 +8,18 @@ public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 {
 
     public Image image; 
-
+    private GameObject parent;
 
 
     [HideInInspector] public Transform parentAfterDrag;
 
  
-
+  public void Awake(){
+    // Debug.Log();
+  //  transform.parent = GameObject.FindWithTag("Canvas").transform; // becomes a child off the UI 
+    transform.SetAsLastSibling();
+    transform.position = Input.mousePosition;
+  }
 
 
  public void OnBeginDrag(PointerEventData evemtData){

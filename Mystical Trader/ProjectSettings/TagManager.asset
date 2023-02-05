@@ -11,6 +11,8 @@ TagManager:
   - Sun
   - Cutting Board
   - EmptyPot
+  - Canvas
+  - SpawnNew
   layers:
   - Default
   - TransparentFX
