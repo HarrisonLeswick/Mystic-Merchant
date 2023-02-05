@@ -8,7 +8,7 @@ public class slot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData) {
 
        GameObject dropped = eventData.pointerDrag;
-        Debug.Log("Tag: " + dropped.tag);
+        
         if (dropped.tag == "Plant"){
             
             pickup pickup = dropped.GetComponent<pickup>();
@@ -18,8 +18,9 @@ public class slot : MonoBehaviour, IDropHandler
         
         if (dropped.tag =="EmptyPot"){
             
-            pickup pickup = dropped.GetComponent<pickup>();
+            emptyPot pickup = dropped.GetComponent<emptyPot>();
             pickup.parentAfterDrag = transform;
+            Debug.Log("Tag: " + dropped.tag);
         }
 
 

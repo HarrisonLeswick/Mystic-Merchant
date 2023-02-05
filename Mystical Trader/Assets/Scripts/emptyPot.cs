@@ -6,14 +6,22 @@ using UnityEngine.EventSystems;
 
 public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+
     public Image image; 
+
+
+
     [HideInInspector] public Transform parentAfterDrag;
-    
-    public void OnBeginDrag(PointerEventData evemtData){
-        parentAfterDrag = transform.parent;
-        transform.SetParent(transform.root); // becomes a child off the UI 
-        transform.SetAsLastSibling(); //becomes the last child this makes it so it is the closest to the camera and wont pass under things
-        image.raycastTarget = false; //no ray on drag
+
+ 
+
+
+
+ public void OnBeginDrag(PointerEventData evemtData){
+    parentAfterDrag = transform.parent;
+    transform.SetParent(transform.root); // becomes a child off the UI 
+    transform.SetAsLastSibling(); //becomes the last child this makes it so it is the closest to the camera and wont pass under things
+    image.raycastTarget = false; //no ray on drag
    }
 
   public void OnDrag(PointerEventData evemtData){
@@ -25,10 +33,7 @@ public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
    Debug.Log("Drag end");
    transform.SetParent(parentAfterDrag);
    image.raycastTarget = true; //ray comes back
-
-  Debug.Log("Parent: " + parentAfterDrag);
-
-
+   Debug.Log("Parent: " + parentAfterDrag);
    if (transform.parent != null && transform.parent.tag == "Sun"){ //Finds out if the plant is on the counter the mixing spot or
     Debug.Log("Sun");
    }
@@ -50,4 +55,3 @@ public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
   }
 }
-
