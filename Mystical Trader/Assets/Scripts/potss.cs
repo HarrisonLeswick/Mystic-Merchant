@@ -7,6 +7,11 @@ using UnityEngine.EventSystems;
 public class potss : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
  public GameObject emptyPotPrefab;
+public Vector3 basePosition; 
+ 
+ private void Start() { 
+        basePosition = emptyPotPrefab.transform.position;
+    }
 
     public void OnBeginDrag(PointerEventData evemtData){
        emptyPotPrefab.transform.SetParent(transform.root); // becomes a child off the UI 
@@ -19,7 +24,7 @@ public class potss : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
   }
 
   public void OnEndDrag(PointerEventData evemtData){
-
+     emptyPotPrefab.transform.position = basePosition;
 
   }
 }
