@@ -14,6 +14,7 @@ TagManager:
   - Canvas
   - SpawnNew
   - PotionMachine
+  - Dirt
   layers:
   - Default
   - TransparentFX

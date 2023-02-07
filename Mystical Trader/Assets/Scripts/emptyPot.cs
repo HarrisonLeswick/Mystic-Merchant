@@ -4,11 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
 
-    public Image image; 
+    public Image image;
+    public Sprite fullPot;
     private GameObject parent;
+    public GameObject dirt;
+    private int dirtLevel;
+    private bool full = false;
 
 
     [HideInInspector] public Transform parentAfterDrag;
@@ -17,9 +21,25 @@ public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
   public void Awake(){
     // Debug.Log();
   //  transform.parent = GameObject.FindWithTag("Canvas").transform; // becomes a child off the UI 
-    transform.SetAsLastSibling();
-    transform.position = Input.mousePosition;
+  dirt = GameObject.Find("Dirt Drawer");
+
   }
+
+  public void OnDrop(PointerEventData eventData) {
+   GameObject drop = eventData.pointerDrag;;
+   if (drop == dirt){
+      Debug.Log("dirt in plant");
+      if (dirtLevel <3){
+      dirtLevel++;
+      Debug.Log("Dirt: " + dirtLevel);
+      }
+      if(dirtLevel ==  3){
+        image.sprite = fullPot;
+        full = true;
+      }
+
+   }
+}
 
 
  public void OnBeginDrag(PointerEventData evemtData){
