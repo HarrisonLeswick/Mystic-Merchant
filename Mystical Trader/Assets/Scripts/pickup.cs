@@ -25,6 +25,7 @@ public class pickup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
    private bool pouring = false;
    private float pourTimer = 0.0f;
 
+   private bool isChopped = false;
     private bool isOpen = false;
     [HideInInspector] public Transform parentAfterDrag;
 
@@ -144,6 +145,7 @@ private void Update() {
 
         if(lifeLvl == 2)
             {
+               isChopped = true;
                 adult = true;
                 Debug.Log("Plant is grown");
             }
@@ -171,7 +173,7 @@ public void OnDrop(PointerEventData eventData) {
   
 public void OnPointerEnter(PointerEventData eventData)
    {
-      if (alive){
+      if (alive && !isChopped){
          gameObject.GetComponent<Image>().sprite = open;
          root.GetComponent<root>().rootChange(waterLevel, sunLevel);
          isOpen = true;
@@ -208,19 +210,32 @@ public void OnPointerExit(PointerEventData eventData)
    if (transform.parent != null && transform.parent.tag == "Sun"){ //Finds out if the plant is on the counter the mixing spot or
     Debug.Log("Sun");
    }
-      if (transform.parent != null && transform.parent.tag == "Counter"){
+   
+   if (transform.parent != null && transform.parent.tag == "Counter"){
     Debug.Log("Counter");
    }
-         if (transform.parent != null && transform.parent.tag == "Mixing"){
+   
+   if (transform.parent != null && transform.parent.tag == "Mixing"){
     Debug.Log("Mixing");
    }
-            if (transform.parent != null && transform.parent.tag == "Inventory"){
+   
+   if (transform.parent != null && transform.parent.tag == "Inventory"){
     Debug.Log("Inventory");
    }
-               if (transform.parent != null && transform.parent.tag == "Cutting Board"){
+   
+   if (transform.parent != null && transform.parent.tag == "Cutting Board"){
     Debug.Log("Cutting Board");
+      if (lifeLvl == 2)
+      {
+         Color c = image.color;
+         c.a = 0;
+         // destroys the object and adds the corresponding plant
+         gameObject.GetComponent<Image> ().color = c;
+      }
+   
    }
-               if (transform.parent != null && transform.parent.tag == "Pot"){
+   
+   if (transform.parent != null && transform.parent.tag == "Pot"){
     Debug.Log("Pot");
    }
 

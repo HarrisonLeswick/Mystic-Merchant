@@ -10,7 +10,7 @@ public class slot : MonoBehaviour, IDropHandler
        GameObject dropped = eventData.pointerDrag;
         Debug.Log(dropped.tag);
         if (dropped.tag == "Plant"){
-            
+    
             pickup pickup = dropped.GetComponent<pickup>();
             pickup.parentAfterDrag = transform;
         }
@@ -26,6 +26,7 @@ public class slot : MonoBehaviour, IDropHandler
         if(dropped.tag =="SpawnNew"){
             Debug.Log("Spawning New Assets");
         }
+
 
 
     }
