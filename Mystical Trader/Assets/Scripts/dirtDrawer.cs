@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class dirtDrawer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Image image; 
-    public Image dirtyImage;
     public GameObject dirt;
     public Sprite closed;
     public Sprite open;
@@ -34,7 +33,6 @@ public void OnPointerExit(PointerEventData eventData)
    public void OnBeginDrag(PointerEventData evemtData){
     dirt.transform.SetParent(transform.root); // becomes a child off the UI 
     dirt.transform.SetAsLastSibling(); //becomes the last child this makes it so it is the closest to the camera and wont pass under things
-    dirtyImage.raycastTarget = false; //no ray on drag
    }
 
   public void OnDrag(PointerEventData evemtData){
@@ -43,9 +41,7 @@ public void OnPointerExit(PointerEventData eventData)
   }
 
   public void OnEndDrag(PointerEventData evemtData){
-
-   dirtyImage.raycastTarget = true; //ray comes back
-     dirt.transform.position = basePosition;
+   dirt.transform.position = basePosition;
 
   }
 }

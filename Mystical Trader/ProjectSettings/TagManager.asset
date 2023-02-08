@@ -15,6 +15,12 @@ TagManager:
   - SpawnNew
   - PotionMachine
   - Dirt
+  - BlueSeed
+  - GoldSeed
+  - GreenSeed
+  - OrangeSeed
+  - PinkSeed
+  - RedSeed
   layers:
   - Default
   - TransparentFX

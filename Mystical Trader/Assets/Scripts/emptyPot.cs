@@ -19,16 +19,12 @@ public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
  
   public void Awake(){
-    // Debug.Log();
-  //  transform.parent = GameObject.FindWithTag("Canvas").transform; // becomes a child off the UI 
-  dirt = GameObject.Find("Dirt Drawer");
-
+    dirt = GameObject.Find("Dirt Drawer");
   }
 
   public void OnDrop(PointerEventData eventData) {
    GameObject drop = eventData.pointerDrag;;
    if (drop == dirt){
-      Debug.Log("dirt in plant");
       if (dirtLevel <3){
       dirtLevel++;
       Debug.Log("Dirt: " + dirtLevel);
@@ -39,6 +35,26 @@ public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
       }
 
    }
+   if (dirtLevel == 3 && drop.tag == "BlueSeed"){ //Finds out if the plant is on the counter the mixing spot or
+    Debug.Log("BlueSeed");
+   }
+    if (dirtLevel == 3 && drop.tag == "GoldSeed"){
+    Debug.Log("Counter");
+   }
+    if (dirtLevel == 3 && drop.tag == "GreenSeed"){
+    Debug.Log("GreenSeed");
+   }
+    if (dirtLevel == 3 && drop.tag == "OrangeSeed"){
+    Debug.Log("OrangeSeed");
+   }
+    if (dirtLevel == 3 && drop.tag == "PinkSeed"){
+    Debug.Log("PinkSeed");
+   }
+    if (dirtLevel == 3 && drop.tag == "RedSeed"){
+    Debug.Log("RedSeed");
+   }
+   
+   
 }
 
 
