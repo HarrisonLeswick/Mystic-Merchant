@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 
 public class pickup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
+   //used to know where the object will spawn
+   private GameObject mixingSpot;
+
     public GameObject plant;
     public GameObject root;
     public GameObject water;
@@ -44,11 +47,16 @@ public class pickup : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public bool adult = false;
 
    public float timer = 0.0f;
-   public float decayInterval = 15.0f;
+   public float decayInterval;
 
-private void Start(){
+private void Awake(){
    //dont touch i this idk why it needs this
+
    sunLevel = 3;
+   mixingSpot = GameObject.Find("Mixing Slot");
+   water = GameObject.Find("Watering can Draggable");
+   wetImage = water.GetComponent<Image>();
+   transform.SetParent(mixingSpot.transform);
 }
       
 private void Update() {

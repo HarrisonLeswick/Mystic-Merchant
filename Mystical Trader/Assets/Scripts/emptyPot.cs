@@ -7,6 +7,13 @@ using UnityEngine.EventSystems;
 public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
 
+  public GameObject BlueSeedPrefab;
+  public GameObject GoldSeedPrefab;
+  public GameObject GreenSeedPrefab;
+  public GameObject OrangeSeedPrefab;
+  public GameObject PinkSeedPrefab;
+  public GameObject RedSeedPrefab;
+
     public Image image;
     public Sprite fullPot;
     private GameObject parent;
@@ -37,21 +44,33 @@ public class emptyPot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
    }
    if (dirtLevel == 3 && drop.tag == "BlueSeed"){ //Finds out if the plant is on the counter the mixing spot or
     Debug.Log("BlueSeed");
+    Instantiate(BlueSeedPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+    Destroy(this.gameObject);
    }
     if (dirtLevel == 3 && drop.tag == "GoldSeed"){
-    Debug.Log("Counter");
+    Instantiate(GoldSeedPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+    Debug.Log("GoldSeed");
+    Destroy(this.gameObject);
    }
     if (dirtLevel == 3 && drop.tag == "GreenSeed"){
+    Instantiate(GreenSeedPrefab, new Vector3(0, 0, 0), Quaternion.identity);   
     Debug.Log("GreenSeed");
+    Destroy(this.gameObject);
    }
     if (dirtLevel == 3 && drop.tag == "OrangeSeed"){
+    Instantiate(OrangeSeedPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     Debug.Log("OrangeSeed");
+    Destroy(this.gameObject);
    }
     if (dirtLevel == 3 && drop.tag == "PinkSeed"){
+    Instantiate(PinkSeedPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     Debug.Log("PinkSeed");
+    Destroy(this.gameObject);
    }
     if (dirtLevel == 3 && drop.tag == "RedSeed"){
+    Instantiate(RedSeedPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     Debug.Log("RedSeed");
+    Destroy(this.gameObject);
    }
    
    
